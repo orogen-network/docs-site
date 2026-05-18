@@ -1,0 +1,223 @@
+/*
+ * docs.orogen.network — brand overrides for the VitePress default theme.
+ * Orogen brand tokens (crust + magma + crystal).
+ * Mirrors landing-site/tailwind.config.mjs + landing-site/src/styles/global.css.
+ */
+
+:root {
+  /* ---- raw brand tokens ---- */
+  --orogen-crust-950: #0b0d10;
+  --orogen-crust-900: #11141a;
+  --orogen-crust-800: #1a1f29;
+  --orogen-crust-700: #252b38;
+  --orogen-crust-600: #36404f;
+  --orogen-crust-500: #4f5b6e;
+  --orogen-crust-400: #7c8597;
+  --orogen-crust-300: #a5acbb;
+  --orogen-crust-200: #cdd1da;
+  --orogen-crust-100: #e9ebef;
+
+  --orogen-magma-600: #d97706;
+  --orogen-magma-500: #f59e0b;
+  --orogen-magma-400: #fbbf24;
+  --orogen-magma-300: #fcd34d;
+
+  --orogen-crystal-600: #10b981;
+  --orogen-crystal-500: #34d399;
+  --orogen-crystal-400: #6ee7b7;
+}
+
+/* ----------------------------------------------------------------------------
+ * Force dark theme. Docs match landing-site brand: dark crust everywhere.
+ * -------------------------------------------------------------------------- */
+
+:root,
+html.dark,
+html:not(.dark) {
+  color-scheme: dark;
+
+  /* Brand colour ramp — used by buttons, links, focus rings. */
+  --vp-c-brand-1: var(--orogen-magma-400);
+  --vp-c-brand-2: var(--orogen-magma-500);
+  --vp-c-brand-3: var(--orogen-magma-600);
+  --vp-c-brand-soft: rgba(245, 158, 11, 0.16);
+  --vp-c-brand: var(--orogen-magma-500);
+  --vp-c-brand-light: var(--orogen-magma-400);
+  --vp-c-brand-lighter: var(--orogen-magma-300);
+  --vp-c-brand-dark: var(--orogen-magma-600);
+  --vp-c-brand-darker: var(--orogen-magma-600);
+  --vp-c-brand-next: var(--orogen-magma-500);
+
+  /* Background ramp. */
+  --vp-c-bg: var(--orogen-crust-950);
+  --vp-c-bg-alt: var(--orogen-crust-900);
+  --vp-c-bg-elv: var(--orogen-crust-900);
+  --vp-c-bg-soft: var(--orogen-crust-800);
+
+  /* Surfaces & dividers. */
+  --vp-c-divider: rgba(124, 133, 151, 0.18);
+  --vp-c-gutter: var(--orogen-crust-950);
+  --vp-c-default-1: var(--orogen-crust-700);
+  --vp-c-default-2: var(--orogen-crust-800);
+  --vp-c-default-3: var(--orogen-crust-900);
+  --vp-c-default-soft: rgba(124, 133, 151, 0.12);
+
+  /* Text. */
+  --vp-c-text-1: var(--orogen-crust-100);
+  --vp-c-text-2: var(--orogen-crust-300);
+  --vp-c-text-3: var(--orogen-crust-400);
+
+  /* Border / hairline. */
+  --vp-c-border: rgba(124, 133, 151, 0.22);
+
+  /* Accent semantic colours.
+   * Crystal/emerald is the "verifiable" colour, reserved per brief §5.3 —
+   * map it to the "tip" container so passes/ok states pick it up. */
+  --vp-c-tip-1: var(--orogen-crystal-500);
+  --vp-c-tip-2: var(--orogen-crystal-600);
+  --vp-c-tip-3: var(--orogen-crystal-500);
+  --vp-c-tip-soft: rgba(52, 211, 153, 0.14);
+
+  --vp-c-warning-1: var(--orogen-magma-400);
+  --vp-c-warning-2: var(--orogen-magma-500);
+  --vp-c-warning-3: var(--orogen-magma-500);
+  --vp-c-warning-soft: rgba(251, 191, 36, 0.16);
+
+  /* Buttons. */
+  --vp-button-brand-border: var(--orogen-magma-500);
+  --vp-button-brand-text: #11141a;
+  --vp-button-brand-bg: var(--orogen-magma-500);
+  --vp-button-brand-hover-border: var(--orogen-magma-400);
+  --vp-button-brand-hover-text: #0b0d10;
+  --vp-button-brand-hover-bg: var(--orogen-magma-400);
+  --vp-button-brand-active-border: var(--orogen-magma-600);
+  --vp-button-brand-active-text: #0b0d10;
+  --vp-button-brand-active-bg: var(--orogen-magma-600);
+
+  --vp-button-alt-border: var(--orogen-crust-600);
+  --vp-button-alt-text: var(--orogen-crust-100);
+  --vp-button-alt-bg: var(--orogen-crust-800);
+  --vp-button-alt-hover-border: var(--orogen-crust-500);
+  --vp-button-alt-hover-text: var(--orogen-crust-100);
+  --vp-button-alt-hover-bg: var(--orogen-crust-700);
+  --vp-button-alt-active-border: var(--orogen-crust-500);
+  --vp-button-alt-active-text: var(--orogen-crust-100);
+  --vp-button-alt-active-bg: var(--orogen-crust-700);
+
+  /* Code blocks. */
+  --vp-code-color: var(--orogen-magma-300);
+  --vp-code-bg: rgba(26, 31, 41, 0.7);
+  --vp-code-block-bg: var(--orogen-crust-900);
+  --vp-code-block-color: var(--orogen-crust-200);
+  --vp-code-block-divider-color: rgba(124, 133, 151, 0.18);
+  --vp-code-line-highlight-color: rgba(245, 158, 11, 0.08);
+  --vp-code-line-number-color: var(--orogen-crust-500);
+
+  /* Inline highlight (kbd, mentions). */
+  --vp-c-text-code: var(--orogen-magma-300);
+
+  /* Hero brand gradient — magma → crystal. Reserved for /index hero. */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background:
+    -webkit-linear-gradient(120deg, var(--orogen-magma-400) 0%, var(--orogen-crystal-500) 100%);
+  --vp-home-hero-image-background-image:
+    linear-gradient(-45deg, var(--orogen-magma-500) 30%, var(--orogen-crystal-500) 80%);
+  --vp-home-hero-image-filter: blur(56px);
+  --vp-home-hero-tagline-color: var(--orogen-crust-300);
+
+  /* Custom block accents. */
+  --vp-custom-block-tip-border: rgba(52, 211, 153, 0.4);
+  --vp-custom-block-tip-text: var(--orogen-crystal-500);
+  --vp-custom-block-tip-bg: rgba(16, 185, 129, 0.08);
+  --vp-custom-block-info-border: rgba(124, 133, 151, 0.3);
+  --vp-custom-block-info-text: var(--orogen-crust-200);
+  --vp-custom-block-info-bg: rgba(26, 31, 41, 0.5);
+  --vp-custom-block-warning-border: rgba(245, 158, 11, 0.4);
+  --vp-custom-block-warning-text: var(--orogen-magma-400);
+  --vp-custom-block-warning-bg: rgba(245, 158, 11, 0.06);
+}
+
+/* ----------------------------------------------------------------------------
+ * Body background — faint radial gradient (amber TL, emerald BR), mirroring
+ * landing-site/src/styles/global.css.
+ * -------------------------------------------------------------------------- */
+
+html,
+body,
+#app {
+  background-color: var(--orogen-crust-950);
+}
+
+body {
+  background-image:
+    radial-gradient(at 12% -10%, rgba(245, 158, 11, 0.07), transparent 45%),
+    radial-gradient(at 88% 110%, rgba(52, 211, 153, 0.05), transparent 50%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* ----------------------------------------------------------------------------
+ * Typography. Inter for body, JetBrains Mono for code — system stack fallback
+ * since we don't ship webfonts on docs (per brief §5.4 "or systematic
+ * fallback").
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-font-family-base:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    "Helvetica Neue", Arial, sans-serif;
+  --vp-font-family-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.01em;
+}
+
+/* Tabular numerics inside markdown tables — mirrors dashboards convention. */
+.vp-doc table td,
+.vp-doc table th {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ----------------------------------------------------------------------------
+ * Nav + sidebar polish.
+ * -------------------------------------------------------------------------- */
+
+.VPNav,
+.VPLocalNav {
+  background-color: rgba(11, 13, 16, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.VPSidebar {
+  background-color: var(--orogen-crust-950);
+}
+
+/* Hero "name" gradient — keep it from washing out on small screens. */
+.VPHero .name .clip {
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* Footer — let the inline HTML render link styling cleanly. */
+.VPFooter .message a,
+.VPFooter .copyright a {
+  color: var(--orogen-magma-400);
+}
+.VPFooter .message a:hover,
+.VPFooter .copyright a:hover {
+  color: var(--orogen-magma-300);
+}
+
+/* ----------------------------------------------------------------------------
+ * Accessibility — honour prefers-reduced-motion per brief §5.6.
+ * -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}
