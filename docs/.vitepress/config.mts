@@ -29,8 +29,14 @@ export default defineConfig({
       "meta",
       {
         "http-equiv": "Content-Security-Policy",
+        // 'unsafe-inline' on script-src is required for VitePress's inline
+        // hash-map bootstrap (window.__VP_HASH_MAP__) used by the SPA router;
+        // without it, client-side navigation between routes breaks (the page
+        // stays on whatever HTML was server-rendered, since the router can't
+        // resolve target chunk hashes). Tighten to nonce/sha256 once VitePress
+        // (or a build-time post-processor) supports it.
         content:
-          "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'",
+          "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'",
       },
     ],
     ["meta", { "http-equiv": "X-Content-Type-Options", content: "nosniff" }],
