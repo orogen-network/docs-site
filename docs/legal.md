@@ -5,10 +5,10 @@ public-facing terms, privacy policy, and cookie notice live on the marketing
 site at [orogen.network/legal](https://orogen.network/legal). This page exists
 so that links from the docs footer have somewhere honest to land.
 
-## Licences across the monorepo
+## Licences across the project
 
-The project's default licensing posture, per the repository
-[`README.md`](https://github.com/orogen-network/blob/main/README.md):
+The project's default licensing posture, per the coordination repo
+[`README.md`](https://github.com/orogen-network/orogen-coordination/blob/main/README.md):
 
 | Component | Licence |
 | --- | --- |

@@ -13,8 +13,9 @@ export default defineConfig({
   base: "/",
   cleanUrls: true,
   lang: "en-US",
-  // Many cross-refs still resolve to source RFCs in the monorepo rather than
-  // docs-internal pages. Treat them as warnings, not build errors.
+  // Many cross-refs still resolve to source RFCs in sibling repos
+  // (chain-tooling-rust, pallet-suite, etc.) rather than docs-internal
+  // pages. Treat them as warnings, not build errors.
   ignoreDeadLinks: true,
 
   head: [

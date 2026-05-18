@@ -56,5 +56,6 @@ These live alongside the docs site:
 - Chain explorer: <https://explorer.orogen.network>
 
 If something here contradicts the canonical RFC, the RFC wins. Open an issue
-on the [monorepo](https://github.com/orogen-network) or use the
+on the relevant repo under
+[github.com/orogen-network](https://github.com/orogen-network) or use the
 "Edit this page" link at the bottom of any docs page.

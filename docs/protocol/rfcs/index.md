@@ -7,7 +7,8 @@ compatibility-test bump.
 
 ## In this section
 
-The "Source" column points at the canonical specification in the monorepo;
+The "Source" column points at the canonical specification in
+[`chain-tooling-rust/specs/`](https://github.com/orogen-network/chain-tooling-rust/tree/main/specs);
 the per-RFC pages below summarise it for readers without duplicating it.
 
 | RFC | Topic | Status | Owner | Source |
@@ -37,7 +38,9 @@ hidden.
 | RFC-0014 | cuPOW kernel and proof submission | Pallet Lead |
 | RFC-0015 | Cross-chain bridge ABI (Snowbridge fork) | Bridge Lead |
 
-If you need a contract that isn't listed, open a discussion on the monorepo.
+If you need a contract that isn't listed, open a discussion on the relevant
+repo under [github.com/orogen-network](https://github.com/orogen-network)
+(typically `chain-tooling-rust` for new RFC specs).
 
 ## Versioning and breaking changes
 
