@@ -3,7 +3,7 @@
 The ten RFCs below define every on-chain type, extrinsic, and protocol contract
 that the chain, the runtime, and the off-chain services agree on. They are
 versioned: a breaking change requires lead-of-leads sign-off and a
-compatibility-test bump per plan §4.
+compatibility-test bump.
 
 ## In this section
 

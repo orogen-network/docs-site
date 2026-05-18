@@ -37,7 +37,7 @@ X on independent hardware produced the same response hash."
 - **Replay hardware.** Capable of running each tier's models. A `dc-premium`
   validator needs B200/H200-equivalent GPUs; a validator that only audits
   `cloud-rented` and below needs less.
-- **Validator stake.** 10× the operator minimum (plan §6 rule).
+- **Validator stake.** 10× the operator minimum.
 - **Geographic / IP diversity.** Validator stake-concentration cap is 20% per
   entity; same /16 subnet cannot occupy both top-K slots. Pool-disjoint from
   the operator pool you are auditing.

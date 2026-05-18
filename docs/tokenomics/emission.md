@@ -29,7 +29,7 @@ target_epoch_mint = MAX(target_epoch_mint, MIN_FLOOR_PER_EPOCH);
 
 `elasticity` is a governance parameter, defaults to 1.0, bounded to `[0.8, 1.5]`.
 `HARD_CEILING_PER_EPOCH` is fixed in the runtime; changing it is a runtime
-upgrade, which means a re-audit gate (plan §7.2) and the full 14-day +
+upgrade, which means a re-audit gate and the full 14-day +
 2-day timelock.
 
 ## Why a 180-day rolling window

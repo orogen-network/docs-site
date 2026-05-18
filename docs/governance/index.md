@@ -4,7 +4,7 @@ The chain is governed by a 5-of-7 multisig with a 14-day timelock and a 2-day
 public delay that cannot be bypassed even on emergency fast-track. The
 foundation cannot mint outside the BME rule, cannot override slashing math,
 and cannot buy back tokens. These constraints are pallet-enforced where the
-runtime can enforce them, and red-lined in plan §13 where they cannot.
+runtime can enforce them, and red-lined where they cannot.
 
 The intent is to make the foundation's role unambiguous: emergency response,
 parameter tuning inside bounds, and treasury custody — not discretion over
@@ -36,7 +36,7 @@ outgoing signer cools off for one year beyond their token vesting cliff.
 
 ## What governance can do
 
-- Approve runtime upgrades, subject to the audit-gate in plan §7.2.
+- Approve runtime upgrades, subject to the audit gate.
 - Adjust BME parameters inside their pallet-defined bounds (elasticity in
   `[0.8, 1.5]`, ceiling/floor only via runtime upgrade).
 - Manage the CRL — the TEE revocation list — with a fast-track 3-of-7 path

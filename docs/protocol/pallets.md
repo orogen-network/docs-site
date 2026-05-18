@@ -43,7 +43,7 @@ through shared mutable state. The Cargo workspace lives under
 ## Stability guarantee
 
 Breaking changes to any pallet extrinsic or storage layout require an RFC bump
-and lead-of-leads sign-off (plan §4). Compatibility tests live alongside the
+and lead-of-leads sign-off. Compatibility tests live alongside the
 runtime; the `chain-tooling-rust` CLIs assert wire-format identity against the
 codegen produced by `subxt-codegen`.
 

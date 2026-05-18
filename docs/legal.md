@@ -48,7 +48,7 @@ burned in exchange for non-transferable compute credits (CUC). Any forward-
 looking statement (roadmap dates, supply schedule, validator yield, operator
 break-even) is a target, not a guarantee. Schedule slips before security
 slips — see the
-[roadmap](/start/roadmap) and the red lines in plan §13.
+[roadmap](/start/roadmap) and the [governance red lines](/governance).
 
 This applies in particular to readers in jurisdictions where the legal status
 of network-native utility tokens is unsettled.
@@ -57,7 +57,7 @@ of network-native utility tokens is unsettled.
 
 - General: [hello@orogen.network](mailto:hello@orogen.network)
 - Security disclosures: TBA — pending the formal disclosure programme that
-  ships with the audit gate (plan §10.2).
+  ships with the audit gate.
 
 Updates to this page are tracked alongside the rest of the docs source on
 GitHub.

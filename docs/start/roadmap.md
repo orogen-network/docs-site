@@ -17,4 +17,4 @@ sequence that follows.
 ## Gating philosophy
 
 If any criterion at gate 10.3 is missing, mainnet TGE moves. Schedule slips
-before security slips. See plan §10 and §13 red lines.
+before security slips.

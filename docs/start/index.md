@@ -39,7 +39,7 @@ That is the whole loop. Every section below drills into one part of it.
   splits at the runtime layer.
 - **Permissioned operator set.** Foundation-vetted operators serve the
   testnet today. Permissionless onboarding follows the multi-firm audit and
-  the Day-30 KPI gates in plan §10.4.
+  the Day-30 KPI gates.
 - **SDKs ship today.** The Python SDK (`orogen-sdk`) and the TypeScript SDK
   (`@orogen/sdk`) are drop-in OpenAI clients pointing at
   `gateway.orogen.network`. See [Downloads](/downloads).

@@ -58,6 +58,5 @@ you keep your bond and your reputation.
   [onboarding wizard](/operators/onboarding) or the manual `wallet-cli` path.
 - **Mainnet TGE:** mainnet opens to vetted operators after the multi-firm
   audit clears.
-- **Permissionless:** open registration follows TGE, gated on the Day-30 KPIs
-  in plan §10.4. Stake-concentration and IP-diversity rules apply to every
-  registration path.
+- **Permissionless:** open registration follows TGE, gated on the Day-30 KPIs.
+  Stake-concentration and IP-diversity rules apply to every registration path.

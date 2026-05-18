@@ -1,6 +1,6 @@
 # Multisig + timelock
 
-5-of-7 multisig with 14-day timelock and 2-day public delay even for emergency fast-track. See plan §8 and §13 red lines.
+5-of-7 multisig with 14-day timelock and 2-day public delay even for emergency fast-track.
 
 ## Composition
 
@@ -18,7 +18,7 @@ Hardware wallets (Ledger or equivalent), geographic distribution required (no >3
 2. Devnet 7d soak
 3. Forge 14d soak
 4. Shadowfork 7d + rollback drill
-5. Re-audit if triggered (see plan §7.2)
+5. Re-audit if triggered
 6. On-chain governance proposal
 7. **14-day timelock**
 8. **2-day public delay** (cannot bypass, even emergency)
