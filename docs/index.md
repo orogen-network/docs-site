@@ -54,10 +54,14 @@ prose here exists to orient, not to duplicate.
 
 ## Status
 
-- **Forge testnet is live.** The OpenAI-compatible gateway routes traffic to
-  TEE-attested operators on `gateway.orogen.network`; the chain runs at
-  `forge-rpc.orogen.network`; receipts and slashing events stream through
-  `explorer.orogen.network`.
+- **Forge testnet chain is live.** A single foundation validator produces
+  blocks every 6s with GRANDPA finality. RPC at
+  `https://forge-rpc.orogen.network`, WebSocket at
+  `wss://chain.orogen.network`. The full validator runbook + Polkadot.js /
+  subxt snippets are on the [Forge testnet](/start/forge-testnet) page.
+  The OpenAI-compatible gateway (`gateway.orogen.network`) is still
+  preparing; see the [Roadmap](/start/roadmap) for the post-audit
+  sequence.
 - **SDKs ship today.** `pip install orogen-sdk`, `npm install @orogen/sdk`,
   and the LiteLLM provider all point at the live gateway out of the box. See
   [Downloads](/downloads).

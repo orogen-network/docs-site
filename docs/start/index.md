@@ -19,6 +19,9 @@ That is the whole loop. Every section below drills into one part of it.
 - [Roadmap](/start/roadmap) — the seven-phase plan from the live Forge
   testnet through Phase-3 federated post-training, with mainnet TGE as the
   next gate after audit.
+- [Forge testnet](/start/forge-testnet) — public RPC, WSS, and libp2p
+  endpoints; quick checks; how to connect with Polkadot.js / subxt; how to
+  run a full node that syncs from the foundation seed.
 
 ## Pick a path by role
 
@@ -33,10 +36,12 @@ That is the whole loop. Every section below drills into one part of it.
 
 ## What is live today
 
-- **Forge testnet.** The gateway routes OpenAI-compatible traffic to
-  TEE-attested operators; validators replay a stake-weighted sample of jobs
-  on identical hardware; settlement batches land on chain with burn-and-mint
-  splits at the runtime layer.
+- **Forge testnet chain.** Single foundation validator producing blocks
+  every 6s with GRANDPA finality. Public endpoints:
+  `https://forge-rpc.orogen.network`, `wss://chain.orogen.network`, and
+  the IPv6 bootnode. Runtime pallets compile + dispatch but the economic
+  math is still skeleton — connect to it for tooling work, not for
+  pricing. See [Forge testnet](/start/forge-testnet).
 - **Permissioned operator set.** Foundation-vetted operators serve the
   testnet today. Permissionless onboarding follows the multi-firm audit and
   the Day-30 KPI gates.

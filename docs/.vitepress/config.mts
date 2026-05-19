@@ -95,6 +95,7 @@ export default defineConfig({
             { text: "Overview", link: "/start/" },
             { text: "Architecture summary", link: "/start/architecture" },
             { text: "Roadmap", link: "/start/roadmap" },
+            { text: "Forge testnet", link: "/start/forge-testnet" },
           ],
         },
         {
