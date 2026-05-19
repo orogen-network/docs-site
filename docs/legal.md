@@ -35,7 +35,7 @@ Operators registering on chain must submit a sanctions screening proof at
 registration time (see [RFC-0009](/protocol/rfcs/0009)). The screening uses
 multiple providers (Chainalysis, TRM, Elliptic — TBA which combination becomes
 mandatory). A `SanctionsHit` is a 100%-slash, no-dispute fault code with a
-permanent ban (DECISIONS H14).
+permanent ban.
 
 These provisions apply to the network, not to readers of this site.
 
