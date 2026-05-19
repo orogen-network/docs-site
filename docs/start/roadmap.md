@@ -5,8 +5,8 @@ sequence that follows.
 
 | Phase | Status | Milestone | Gate |
 |---|---|---|---|
-| 0 — Stealth foundation | Shipped | Centralized stack + paying pilots | — |
-| 1 — Early revenue | Shipped | $1M ARR + pallet-suite v0.9 | — |
+| 0 — Stealth foundation | Shipped | Centralized vLLM + LiteLLM stack stood up; operator-partner CC mode attested in lab | — |
+| 1 — Pre-testnet engineering | Shipped | Pallet-suite v0.9 integrated; L1–L4 verification stack composed end-to-end | — |
 | 2 — **Forge testnet + audits** | **Live** | Public testnet; multi-firm audit in flight | 10.2 |
 | 3 — Mainnet TGE | Next | Token live, BME active | 10.3 |
 | 4 — Permissionless + opML + LoRA | Follows TGE | Permissionless onboarding | 10.4 |
