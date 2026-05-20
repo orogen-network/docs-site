@@ -13,8 +13,8 @@ the per-RFC pages below summarise it for readers without duplicating it.
 
 | RFC | Topic | Status | Owner | Source |
 | --- | --- | --- | --- | --- |
-| [RFC-0001](/protocol/rfcs/0001) | Signed response receipt format | Live on Forge · ratification pending audit | Verification Lead | [spec](https://github.com/orogen-network/chain-tooling-rust/blob/main/specs/RFC-0001-receipt-format.md) |
-| [RFC-0002](/protocol/rfcs/0002) | Multi-vendor attestation report | Live on Forge · ratification pending audit | Security Lead | [spec](https://github.com/orogen-network/chain-tooling-rust/blob/main/specs/RFC-0002-attestation-report.md) |
+| [RFC-0001](/protocol/rfcs/0001) | Signed response receipt format | Implemented locally · Forge readiness pending | Verification Lead | [spec](https://github.com/orogen-network/chain-tooling-rust/blob/main/specs/RFC-0001-receipt-format.md) |
+| [RFC-0002](/protocol/rfcs/0002) | Multi-vendor attestation report | Implemented locally · Forge readiness pending | Security Lead | [spec](https://github.com/orogen-network/chain-tooling-rust/blob/main/specs/RFC-0002-attestation-report.md) |
 | [RFC-0003](/protocol/rfcs/0003) | Heartbeat schema | Draft | Serving Lead | [spec](https://github.com/orogen-network/chain-tooling-rust/blob/main/specs/RFC-0003-heartbeat-schema.md) |
 | [RFC-0004](/protocol/rfcs/0004) | Batch settlement format | Draft | Pallet Lead | [spec](https://github.com/orogen-network/chain-tooling-rust/blob/main/specs/RFC-0004-batch-settlement.md) |
 | [RFC-0005](/protocol/rfcs/0005) | Slashing extrinsic ABI | Draft | Pallet Lead + Verification Lead | [spec](https://github.com/orogen-network/chain-tooling-rust/blob/main/specs/RFC-0005-slashing-extrinsic.md) |
