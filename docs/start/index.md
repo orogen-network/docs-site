@@ -31,7 +31,7 @@ That is the whole loop. Every section below drills into one part of it.
 | **Operators** — GPU owners across six tiers | [/operators/](/operators/) |
 | **Validators** — replay node operators, stakers | [/validators/](/validators/) |
 | **Protocol readers** — engineers, researchers | [/protocol/](/protocol/) and the [RFCs](/protocol/rfcs/) |
-| **Token holders, governance** | [/tokenomics/](/tokenomics/) and [/governance/](/governance/) |
+| **Protocol governance** | [/tokenomics/](/tokenomics/) and [/governance/](/governance/) |
 | **Adapter authors** (LoRA publishing with royalties) | [/protocol/](/protocol/) — adapter pallet coverage tracks RFC-0011 |
 
 ## Current Status
