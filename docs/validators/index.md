@@ -45,7 +45,7 @@ X on independent hardware produced the same response hash."
   current runtime, and `rotate_permits(epoch)` controls which accounts can
   submit weight vectors for that epoch.
 
-## What you earn
+## Verification allocation
 
 The 15% verification slice is proportional to:
 

@@ -39,16 +39,15 @@ permanent ban.
 
 These provisions apply to the network, not to readers of this site.
 
-## Not investment advice
+## Informational content
 
 Nothing in these docs, the marketing site, the press kit, or the repository
-is an offer to sell or a solicitation of an offer to buy any token or
-security. OROG is a utility token whose only on-chain function is to be
-burned in exchange for non-transferable compute credits (CUC). Any forward-
-looking statement (roadmap dates, supply schedule, validator yield, operator
-break-even) is a target, not a guarantee. Schedule slips before security
-slips — see the
-[roadmap](/start/roadmap) and the [governance red lines](/governance).
+is an offer to sell or a solicitation of an offer to buy any token. OROG is a
+utility token whose on-chain functions are compute settlement, operator and
+validator bonding, and governance. Any forward-looking statement (roadmap dates,
+supply schedule, validator economics, operator break-even) is a target, not a
+guarantee. Schedule slips before security slips — see the [roadmap](/start/roadmap)
+and the [governance red lines](/governance).
 
 This applies in particular to readers in jurisdictions where the legal status
 of network-native utility tokens is unsettled.

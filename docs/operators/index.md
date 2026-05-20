@@ -1,9 +1,9 @@
 # Operators
 
-Operators serve inference and earn OROG via the burn-and-mint loop. Payouts
-are USD-denominated at the oracle TWAP, not yield-of-token speculation: the
-chain mints the OROG quantity that clears at the customer's burn price, capped
-by the per-epoch headroom.
+Operators serve inference and receive OROG settlement via the burn-and-mint
+loop. Payouts are USD-denominated at the oracle TWAP: the chain mints the OROG
+quantity that clears at the customer's burn price, capped by the per-epoch
+headroom.
 
 The operator's job, at the protocol level, is to keep an attested worker
 daemon online, route by capability and tier, emit signed receipts, and stay

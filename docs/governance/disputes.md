@@ -17,7 +17,7 @@ When an operator is slashed, they can dispute. Slashed stake is **escrowed not b
 
 ## Outcomes
 
-- **Dispute upheld** (operator wins): stake restored, dispute bond returned, slashing validator's score reduced, panelist bonds returned + small reward.
+- **Dispute upheld** (operator wins): stake restored, dispute bond returned, slashing validator's score reduced, panelist bonds returned + small bounty.
 - **Dispute rejected:** slash finalizes, dispute bond burned (anti-frivolous).
 - **Bad-faith dispute:** additional 25% slash for false claim.
 

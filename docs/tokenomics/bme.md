@@ -49,7 +49,7 @@ foundation multisig cannot override the math (governance red line #16).
                                                 v
                                         +--------------+
                                         |  Operator    |
-                                        |  OROG reward |
+                                        | OROG settle. |
                                         +--------------+
 ```
 

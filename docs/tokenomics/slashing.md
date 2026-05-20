@@ -47,7 +47,7 @@ For the on-chain extrinsic shape, see [RFC-0005](/protocol/rfcs/0005).
    decision. If upheld, escrow → burned (i.e. OROG supply contracts). If
    overturned, escrow returns to the operator, dispute bond returns, the
    slashing validator's Yuma weight is reduced, and panellists' bonds return
-   plus a small reward.
+   plus a small bounty.
 
 ## Asymmetric outcomes
 

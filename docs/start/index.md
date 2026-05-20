@@ -6,7 +6,7 @@ hardware and binary are TEE-attested; validators replay a sample of those
 inferences on independent hardware and slash mismatches on chain. Customers
 pay USD or stablecoin; the gateway burns OROG at the oracle TWAP and credits
 the customer in non-transferable Compute Unit Credits (CUC); operators serve
-inference and earn freshly-minted OROG, capped by a 180-day rolling burn-cap
+inference and receive per-job settlement, capped by a 180-day rolling burn-cap
 and a 5%/year supply ceiling.
 
 That is the whole loop. Every section below drills into one part of it.

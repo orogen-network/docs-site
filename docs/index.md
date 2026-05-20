@@ -27,8 +27,8 @@ features:
     details: '`pip install orogen-sdk` or `npm install @orogen/sdk` and point `base_url` at the gateway. The wire shape is OpenAI Chat Completions plus four optional `useful_*` fields (nonce, tier, region, price cap). A LiteLLM provider ships the same surface inside existing stacks.'
     link: /customers/
     linkText: Customer guide
-  - title: USD-denominated payouts via burn-and-mint, not speculation.
-    details: Customers pay USD. The gateway burns OROG at the oracle TWAP (RFC-0008) and credits the customer in non-transferable CUC. Operators serve inference and earn freshly-minted OROG — 75% operator, 15% verification, 5% treasury, 5% governance.
+  - title: USD-denominated payouts via burn-and-mint.
+    details: Customers pay USD. The gateway burns OROG at the oracle TWAP (RFC-0008) and credits the customer in non-transferable CUC. Operators serve inference and receive per-job settlement — 75% operator, 15% verification, 5% treasury, 5% governance.
     link: /tokenomics/
     linkText: Tokenomics
   - title: Demand-elastic emission, pallet-enforced — no foundation mint discretion.
@@ -49,7 +49,7 @@ prose here exists to orient, not to duplicate.
 | --- | --- | --- |
 | **Customers** — app builders, LLM consumers | Send OpenAI-shaped requests, verify receipts, estimate per-tier price | [/customers/](/customers/) |
 | **Operators** — GPU owners across six tiers | Run a node, pass attestation, stake, route to demand | [/operators/](/operators/) |
-| **Validators** — replay node operators, stakers | Earn the 15% verification slice by replaying sampled inferences | [/validators/](/validators/) |
+| **Validators** — replay node operators, stakers | Receive the 15% verification slice by replaying sampled inferences | [/validators/](/validators/) |
 | **Researchers, holders, governance** | Read the protocol spec, the RFCs, and the tokenomics | [/protocol/](/protocol/) · [/tokenomics/](/tokenomics/) · [/governance/](/governance/) |
 
 ## Status

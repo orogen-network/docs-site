@@ -19,10 +19,10 @@ Per epoch (360 blocks, about 36 minutes at the current 6-second block time):
    median, aggregates clipped scores by validator stake weight, then normalizes
    operator incentives to basis points.
 
-## Validator earnings
+## Validator allocation
 
 The target economics reserve 15% of per-job emission split for validators,
-opML watchers, and zkML provers. Validator earnings are intended to be
+opML watchers, and zkML provers. Validator allocation is intended to be
 proportional to:
 
 - Sampling volume × match-rate-to-consensus.
