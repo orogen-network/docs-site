@@ -1,7 +1,7 @@
 # Protocol
 
 The chain is a Substrate fork (Polkadot SDK) with Frontier EVM JSON-RPC
-compatibility. 12-second blocks. GRANDPA finality. Aura authoring at TGE
+compatibility. 6-second blocks in the current runtime. GRANDPA finality. Aura authoring at TGE
 (16–24 foundation-run validators), BABE at permissionless. The runtime
 composes eleven pallets that share narrow contracts and one off-chain
 service stack that does the work the chain cannot.
@@ -26,7 +26,7 @@ sections.
 | `pallet-model-registry` | Base models + adapters (LoRA) + licence + royalties. |
 | `pallet-operator-stake` | Operator registry + staking + heartbeats. |
 | `pallet-job-market` | Job lifecycle state machine. |
-| `pallet-yuma-consensus` | Stake-weighted validator scoring with outlier clipping. |
+| `pallet-yuma-consensus` | Governed validator admission, top-K permits, and median-clipped stake-weighted scoring. |
 | `pallet-bme` | Burn-and-mint equilibrium; per-epoch mint headroom; oracle binding. |
 | `pallet-slashing` | Slashing + disputes + arbitration. |
 | `pallet-pouw-mint` | Optional 5% emission lane (Hopper cuPOW) — deferred to Q4 2028. |
@@ -61,11 +61,11 @@ for readers without duplicating the spec.
 
 | Parameter | Value |
 | --- | --- |
-| Block time | 12 s |
-| Epoch | 360 blocks (~72 min) |
+| Block time | 6 s |
+| Epoch | 360 blocks (~36 min) |
 | Finality | GRANDPA |
 | Authoring | Aura at TGE; BABE at permissionless |
-| Validator set | 16–24 foundation-run at TGE; top-128 by stake at permissionless |
+| Validator set | 16–24 foundation-run at TGE; governed Yuma set capped at 64 in the current runtime |
 | EVM | Frontier JSON-RPC, full eth_* surface |
 | Cross-chain | Snowbridge fork to Ethereum (post-TGE) |
 

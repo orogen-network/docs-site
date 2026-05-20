@@ -4,8 +4,8 @@
 import { OrogenClient } from "@orogen/sdk";
 
 const client = new OrogenClient({
-  apiKey: "useful_...",
-  baseUrl: "https://gateway.orogen.network/v1",
+  apiKey: process.env.OROGEN_API_KEY!,
+  baseUrl: process.env.OROGEN_GATEWAY_URL!,
 });
 
 const response = await client.chat.completions.create({

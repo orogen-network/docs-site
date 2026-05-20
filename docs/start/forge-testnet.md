@@ -1,31 +1,19 @@
 # Forge testnet
 
-Forge is the public Orogen testnet. A foundation-run seed validator on the
-edge VM produces blocks every six seconds; anyone can connect to it for
-RPC, WebSocket subscriptions, or libp2p peering — no allow-list, no auth.
+Forge is the planned public Orogen testnet. In the current split-repo state,
+do not treat any public RPC, WebSocket, GraphQL, gateway, validator, or
+operator endpoint as live unless the coordination handoff explicitly says so.
 
-The chain itself is **liveness-only** today: the runtime pallets compile
-and dispatch correctly, but the economic logic (BME settlement, Yuma
-aggregation, slashing severity) is still skeleton code awaiting the
-multi-firm audit and the chain-engineering hire wave. Treat Forge as a
-chain you can build wallet tooling, explorers, indexers, and SDK
-integrations against, **not** as a chain that prices inference or pays
-operators. Mainnet TGE follows audits; see [Roadmap](/start/roadmap).
+The chain/runtime code can be exercised locally, and the split-repo local
+gate is green. The production Forge milestone still requires durable
+service configuration, independent validator replay inputs, live chaos
+drills, CI/CODEOWNERS, real release artifacts, and audit coverage.
 
-## Public endpoints
+## Endpoint Policy
 
-| Use | URL |
-|---|---|
-| HTTPS JSON-RPC (read-only) | `https://forge-rpc.orogen.network` |
-| HTTPS + WSS JSON-RPC (Polkadot.js, subxt, explorer) | `https://chain.orogen.network` · `wss://chain.orogen.network` |
-| libp2p bootnode (IPv6 only) | `/ip6/2a01:240:ad00:2502:3:a68c:1ab2:1861/tcp/30333/p2p/12D3KooWQdR4TD9JEDkim5nKsETDhS3guQVR1U5s1S6JMefVMSn8` |
-
-The RPC server is started with `--rpc-methods Safe`, so unsafe methods
-(`author_*` write paths, `system_addReservedPeer`, etc.) are rejected.
-Use a self-hosted full node if you need them.
-
-The libp2p endpoint requires IPv6 connectivity — the seed VM has no
-publicly-routed IPv4 for non-HTTP transports.
+Public endpoint tables are intentionally withheld until Forge is actually
+operating. Hostnames must either serve the real service or an explicit
+unavailable response; docs must not imply live chain access before that.
 
 ## Chain identity
 
@@ -33,31 +21,16 @@ publicly-routed IPv4 for non-HTTP transports.
 |---|---|
 | `name` | `Orogen Forge Testnet` |
 | `id` | `orogen_forge` |
-| `chainType` | `Live` |
+| `chainType` | Planned testnet |
 | `protocolId` | `orogenforge` |
 | Token | `OROG`, 12 decimals |
 | ss58 prefix | `42` |
-| Genesis hash | `0x78f3de354670b9080a9d1c92cfe0413765a7a42f073bd7dfa51b4d5219cd003d` |
+| Genesis hash | To be published with the signed chain spec |
 
 ## Quick checks
 
-```sh
-# Identity
-curl -s https://forge-rpc.orogen.network \
-  -H 'Content-Type: application/json' \
-  -d '{"jsonrpc":"2.0","method":"system_chain","params":[],"id":1}'
-# → {"jsonrpc":"2.0","id":1,"result":"Orogen Forge Testnet"}
-
-# Health
-curl -s https://forge-rpc.orogen.network \
-  -H 'Content-Type: application/json' \
-  -d '{"jsonrpc":"2.0","method":"system_health","params":[],"id":1}'
-
-# Latest finalized head
-curl -s https://forge-rpc.orogen.network \
-  -H 'Content-Type: application/json' \
-  -d '{"jsonrpc":"2.0","method":"chain_getFinalizedHead","params":[],"id":1}'
-```
+Quick checks will be published with the signed chain spec and public RPC
+announcement.
 
 ## Connect with Polkadot.js
 
@@ -65,7 +38,7 @@ curl -s https://forge-rpc.orogen.network \
 import { ApiPromise, WsProvider } from "@polkadot/api";
 
 const api = await ApiPromise.create({
-  provider: new WsProvider("wss://chain.orogen.network"),
+  provider: new WsProvider(process.env.FORGE_WS_URL),
 });
 
 console.log("connected to:", (await api.rpc.system.chain()).toString());
@@ -77,7 +50,7 @@ console.log("genesis:", api.genesisHash.toHex());
 ```rust
 use subxt::{OnlineClient, PolkadotConfig};
 
-let api = OnlineClient::<PolkadotConfig>::from_url("wss://chain.orogen.network").await?;
+let api = OnlineClient::<PolkadotConfig>::from_url(std::env::var("FORGE_WS_URL")?).await?;
 let header = api.blocks().at_latest().await?.header().clone();
 println!("head #{} hash {:?}", header.number, header.hash());
 ```
@@ -95,12 +68,12 @@ git clone https://github.com/orogen-network/chain-node.git
 cd chain-node
 cargo build --release --features dev-runtime
 
-# Sync from the seed (read-only, no validator key).
+# Sync from a published seed once Forge endpoints are announced.
 ./target/release/chain-node \
   --chain forge \
   --base-path ~/.local/share/orogen-forge \
   --name my-forge-node \
-  --bootnodes /ip6/2a01:240:ad00:2502:3:a68c:1ab2:1861/tcp/30333/p2p/12D3KooWQdR4TD9JEDkim5nKsETDhS3guQVR1U5s1S6JMefVMSn8 \
+  --bootnodes "$FORGE_BOOTNODE" \
   --rpc-port 9944 \
   --port 30333
 ```
@@ -111,7 +84,7 @@ Once the local node is syncing you can verify the genesis matches:
 curl -s http://127.0.0.1:9944 \
   -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","method":"chain_getBlockHash","params":[0],"id":1}'
-# → 0x78f3de354670b9080a9d1c92cfe0413765a7a42f073bd7dfa51b4d5219cd003d
+# Compare with the published genesis hash.
 ```
 
 If you see a different genesis hash, your local runtime WASM is at a

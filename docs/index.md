@@ -54,19 +54,15 @@ prose here exists to orient, not to duplicate.
 
 ## Status
 
-- **Forge testnet chain is live.** A single foundation validator produces
-  blocks every 6s with GRANDPA finality. RPC at
-  `https://forge-rpc.orogen.network`, WebSocket at
-  `wss://chain.orogen.network`. The full validator runbook + Polkadot.js /
-  subxt snippets are on the [Forge testnet](/start/forge-testnet) page.
-  The OpenAI-compatible gateway (`gateway.orogen.network`) is still
-  preparing; see the [Roadmap](/start/roadmap) for the post-audit
-  sequence.
-- **SDKs ship today.** `pip install orogen-sdk`, `npm install @orogen/sdk`,
-  and the LiteLLM provider all point at the live gateway out of the box. See
-  [Downloads](/downloads).
-- **Mainnet TGE follows the multi-firm audit.** The roadmap describes what
-  comes next on top of Forge — see [/start/roadmap](/start/roadmap).
+- **Forge is not a public release gate yet.** The split-repo codebase has a
+  local test gate, but public RPC, GraphQL, gateway, validator, and operator
+  endpoints are not advertised as live production services.
+- **SDKs are installable development packages.** Use the package-manager
+  instructions on [Downloads](/downloads); endpoint defaults must be configured
+  for the environment you are targeting.
+- **Mainnet TGE remains gated.** Forge operation, independent validators,
+  real audits, live chaos drills, and release CI all need to close before any
+  production launch claim.
 
 If something here contradicts the canonical RFC, the RFC wins and this page
 is the bug. Open an issue or edit on GitHub.

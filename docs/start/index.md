@@ -16,12 +16,12 @@ That is the whole loop. Every section below drills into one part of it.
 - [Architecture summary](/start/architecture) — the chain, the off-chain
   services, the verification stack, and the tokenomics in one ASCII diagram
   and a short table.
-- [Roadmap](/start/roadmap) — the seven-phase plan from the live Forge
-  testnet through Phase-3 federated post-training, with mainnet TGE as the
-  next gate after audit.
-- [Forge testnet](/start/forge-testnet) — public RPC, WSS, and libp2p
-  endpoints; quick checks; how to connect with Polkadot.js / subxt; how to
-  run a full node that syncs from the foundation seed.
+- [Roadmap](/start/roadmap) — the seven-phase plan from local implementation
+  work through Forge readiness, audits, mainnet TGE, and Phase-3 federated
+  post-training.
+- [Forge testnet](/start/forge-testnet) — the planned public testnet shape,
+  current local-only status, and the checks that must pass before endpoints
+  are advertised as live.
 
 ## Pick a path by role
 
@@ -34,31 +34,17 @@ That is the whole loop. Every section below drills into one part of it.
 | **Token holders, governance** | [/tokenomics/](/tokenomics/) and [/governance/](/governance/) |
 | **Adapter authors** (LoRA publishing with royalties) | [/protocol/](/protocol/) — adapter pallet coverage tracks RFC-0011 |
 
-## What is live today
+## Current Status
 
-- **Forge testnet chain.** Single foundation validator producing blocks
-  every 6s with GRANDPA finality. Public endpoints:
-  `https://forge-rpc.orogen.network`, `wss://chain.orogen.network`, and
-  the IPv6 bootnode. Runtime pallets compile + dispatch but the economic
-  math is still skeleton — connect to it for tooling work, not for
-  pricing. See [Forge testnet](/start/forge-testnet).
-- **Permissioned operator set.** Foundation-vetted operators serve the
-  testnet today. Permissionless onboarding follows the multi-firm audit and
-  the Day-30 KPI gates.
-- **SDKs ship today.** The Python SDK (`orogen-sdk`) and the TypeScript SDK
-  (`@orogen/sdk`) are drop-in OpenAI clients pointing at
-  `gateway.orogen.network`. See [Downloads](/downloads).
-- **Mainnet TGE is the next phase.** It follows the multi-firm audit; see the
-  [roadmap](/start/roadmap).
-
-## Operator and explorer surfaces
-
-These live alongside the docs site:
-
-- Status page: <https://status.orogen.network>
-- Subsidy dashboard: <https://subsidy.orogen.network>
-- Attestation explorer: <https://attestation.orogen.network>
-- Chain explorer: <https://explorer.orogen.network>
+- **Local split-repo gate is green.** The source tree has local unit/lint/build
+  coverage, but this is not a production release gate.
+- **Forge public endpoints are not advertised as live.** RPC, GraphQL,
+  gateway, validator, operator, and explorer surfaces must either serve real
+  services or explicit unavailable responses before they are listed here.
+- **SDKs are installable development packages.** Configure endpoint URLs
+  explicitly for the environment you are targeting. See [Downloads](/downloads).
+- **Mainnet TGE is gated.** Forge operation, audits, live chaos drills, release
+  CI, and legal/foundation readiness all need to close first.
 
 If something here contradicts the canonical RFC, the RFC wins. Open an issue
 on the relevant repo under

@@ -1,9 +1,14 @@
 # Python SDK
 
 ```python
+import os
+
 from orogen_sdk import OrogenClient
 
-with OrogenClient(api_key="orog_...", base_url="https://gateway.orogen.network/v1") as client:
+with OrogenClient(
+    api_key=os.environ["OROGEN_API_KEY"],
+    base_url=os.environ["OROGEN_GATEWAY_URL"],
+) as client:
     response = client.chat.completions.create(
         model="llama-3.1-70b-instruct@my-adapter",
         messages=[{"role": "user", "content": "Hello!"}],

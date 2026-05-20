@@ -4,12 +4,16 @@ Validators sample ≥10% of inferences per epoch and replay them on independent 
 
 ## Selection (RFC-0006)
 
-Commit-reveal randomness:
+Target commit-reveal randomness from RFC-0006:
 
 1. Per epoch, each validator commits `H_i = BLAKE2(secret_i)`.
 2. One epoch later, each reveals `secret_i`. Defectors lose one epoch's emissions; 2nd offense loses permit.
 3. `epoch_random = XOR(all revealed secrets)`.
 4. Per-receipt sample selection: stake-weighted Fisher-Yates seeded by `BLAKE2(epoch_random || receipt_merkle_root || batch_id)`.
+
+The current `pallet-yuma-consensus` runtime surface implements governed
+validator admission, top-K permits, weight submission, and incentive
+computation. RFC-0006 commit/reveal extrinsics are not in the pallet yet.
 
 ## Replay process
 

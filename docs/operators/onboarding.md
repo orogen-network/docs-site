@@ -2,7 +2,7 @@
 
 ## 1-click web wizard
 
-On Forge testnet, `operator-onboarding-ui` walks new operators through:
+For the planned Forge testnet, `operator-onboarding-ui` will walk new operators through:
 
 1. **GPU detection** — auto-detects local NVIDIA / AMD GPUs via lspci + nvidia-smi.
 2. **TEE attestation** — produces a combined NVIDIA CC + Intel TDX (or AMD SEV-SNP) quote via `attestation-service`.
@@ -21,7 +21,7 @@ Operators can skip the wizard:
 wallet-cli new --output ~/keys.json
 
 # 2. Get attestation
-curl -X POST https://attestation.orogen.network/v1/attest -d '{"operator_id":"...","tier":"dc-standard",...}'
+curl -X POST "$ATTESTATION_SERVICE_URL/v1/attest" -d '{"operator_id":"...","tier":"dc-standard",...}'
 
 # 3. Bind stake
 wallet-cli register-operator \

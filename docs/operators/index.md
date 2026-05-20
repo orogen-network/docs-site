@@ -52,10 +52,11 @@ slash event plus auto-downgrade. If your hardware cannot pass the verification
 matrix for `dc-premium`, register as the highest tier you can actually serve —
 you keep your bond and your reputation.
 
-## How registration works today
+## Registration Path
 
-- **Forge testnet:** foundation-vetted operators register through the
-  [onboarding wizard](/operators/onboarding) or the manual `wallet-cli` path.
+- **Forge testnet:** foundation-vetted operator registration is planned through
+  the [onboarding wizard](/operators/onboarding) or the manual `wallet-cli`
+  path once Forge endpoints are announced.
 - **Mainnet TGE:** mainnet opens to vetted operators after the multi-firm
   audit clears.
 - **Permissionless:** open registration follows TGE, gated on the Day-30 KPIs.

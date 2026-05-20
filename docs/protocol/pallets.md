@@ -19,7 +19,7 @@ through shared mutable state. The Cargo workspace lives under
 | `pallet-model-registry` | Base models + LoRA adapters + licence + royalty config (RFC-0011) | `register_model`, `register_adapter`, `set_royalty` |
 | `pallet-operator-stake` | Operator registry, bond, hotkey rotation, on-chain heartbeats (RFC-0009, RFC-0003) | `register_operator`, `bond_more`, `unbond`, `heartbeat` |
 | `pallet-job-market` | Job lifecycle state machine (queue → assigned → settled → disputed) | `submit_job`, `assign_job`, `settle_batch` |
-| `pallet-yuma-consensus` | Stake-weighted validator scoring with outlier clipping | `commit`, `reveal`, `submit_weights` |
+| `pallet-yuma-consensus` | Governed validator admission, top-K permits, stake-weighted scoring with median clipping | `add_validator`, `remove_validator`, `update_validator_stake`, `rotate_permits`, `submit_weights`, `compute_epoch_incentives` |
 | `pallet-bme` | Burn-and-mint equilibrium; per-epoch mint headroom; oracle binding | `burn`, `mint_to_operator`, `update_cap` |
 | `pallet-slashing` | Per-detection slashing with escrow, dispute, and circuit breaker (RFC-0005) | `report`, `open_dispute`, `ratify`, `pause` |
 | `pallet-pouw-mint` | Optional cuPOW emission lane — deferred to Q4 2028 | `submit_pow`, `claim` |
@@ -35,8 +35,8 @@ through shared mutable state. The Cargo workspace lives under
 3. Gateway aggregates many receipts into a `SettlementBatch` (RFC-0004) and
    submits it. `pallet-job-market::settle_batch` calls `pallet-bme::burn` then
    `pallet-bme::mint_to_operator` against the epoch headroom.
-4. Validators sampled by `pallet-yuma-consensus` replay receipts and submit
-   `pallet-slashing::report` on mismatch.
+4. Validators replay receipts off-chain and submit Yuma weight vectors;
+   mismatches are reported through `pallet-slashing::report`.
 5. `pallet-nonce-vault` records the customer nonce so the same receipt cannot
    be settled twice.
 

@@ -1,14 +1,14 @@
 # Downloads
 
-Pre-built artifacts and source bundles. Each artifact ships with a SHA-256 entry in [`SHA256SUMS`](https://orogen.network/downloads/SHA256SUMS).
+This page lists the current release policy. The only checked-in download artifact in this workspace is the technical whitepaper. SDKs install from package registries, and binary release tarballs are published only from signed GitHub releases once a release is cut.
 
 ## Binaries (Linux x64)
 
-| Artifact | Size | Use |
+| Artifact | Distribution | Use |
 |---|---|---|
-| [chain-node-linux-x64-0.1.0.tar.gz](https://orogen.network/downloads/chain-node-linux-x64-0.1.0.tar.gz) | ~26 MB | Substrate node binary; boots a dev chain with `chain-node --dev --tmp` |
-| [wallet-cli-linux-x64-0.1.0.tar.gz](https://orogen.network/downloads/wallet-cli-linux-x64-0.1.0.tar.gz) | ~3 MB | Operator/validator CLI wallet with subxt RPC |
-| [mining-cli-linux-x64-0.1.0.tar.gz](https://orogen.network/downloads/mining-cli-linux-x64-0.1.0.tar.gz) | ~900 KB | Admin CLI: chain-spec generation, RFC validation, slash-receipt verification |
+| `chain-node-linux-x64` | GitHub release artifact after signed release cut | Substrate node binary; boots a dev chain with `chain-node --dev --tmp` |
+| `wallet-cli-linux-x64` | GitHub release artifact after signed release cut | Operator/validator CLI wallet with subxt RPC |
+| `mining-cli-linux-x64` | GitHub release artifact after signed release cut | Admin CLI: chain-spec generation, RFC validation, slash-receipt verification |
 
 ## SDKs
 
@@ -18,28 +18,23 @@ Pre-built artifacts and source bundles. Each artifact ships with a SHA-256 entry
 | TypeScript: `@orogen/sdk` | `npm install @orogen/sdk` |
 | LiteLLM provider: `litellm-orogen-provider` | `pip install litellm-orogen-provider` |
 
-Source bundles:
+Source bundles are produced by package registries and GitHub releases; they are not linked here until the corresponding artifact is present under `orogen.network/downloads/` with a checksum.
 
-| Artifact | Size |
-|---|---|
-| [orogen_sdk-0.1.0.tar.gz](https://orogen.network/downloads/orogen_sdk-0.1.0.tar.gz) | 7 KB |
-| [orogen_sdk-0.1.0-py3-none-any.whl](https://orogen.network/downloads/orogen_sdk-0.1.0-py3-none-any.whl) | 8 KB |
-| [orogen-sdk-0.1.0.tgz](https://orogen.network/downloads/orogen-sdk-0.1.0.tgz) | 5 KB |
-| [litellm_orogen_provider-0.1.0.tar.gz](https://orogen.network/downloads/litellm_orogen_provider-0.1.0.tar.gz) | 4 KB |
-| [litellm_orogen_provider-0.1.0-py3-none-any.whl](https://orogen.network/downloads/litellm_orogen_provider-0.1.0-py3-none-any.whl) | 4 KB |
+For the current workspace, use registry installs:
+
+```bash
+pip install orogen-sdk
+npm install @orogen/sdk
+pip install litellm-orogen-provider
+```
 
 ## Whitepaper
 
-[**orogen-whitepaper.pdf**](https://orogen.network/downloads/orogen-whitepaper.pdf) (~320 KB) — full plan + RFCs 1–10 in a single document.
+[**orogen-whitepaper.pdf**](https://orogen.network/downloads/orogen-whitepaper.pdf) — full plan + RFCs 1–10 in a single document.
 
 ## Integrity verification
 
-```bash
-curl -O https://orogen.network/downloads/SHA256SUMS
-sha256sum -c SHA256SUMS
-```
-
-The [`manifest.json`](https://orogen.network/downloads/manifest.json) provides machine-readable artifact metadata.
+Release artifacts ship with `SHA256SUMS` and machine-readable metadata in the same signed GitHub release. The docs link linter rejects `orogen.network/downloads/*` links unless the artifact is present in `landing-site/public/downloads/`.
 
 ## Source
 

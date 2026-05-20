@@ -6,6 +6,8 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 
 const root = resolve(new URL("..", import.meta.url).pathname, "docs");
+const repoRoot = resolve(root, "..", "..");
+const landingDownloads = resolve(repoRoot, "landing-site", "public", "downloads");
 
 function walk(dir, acc = []) {
   for (const name of readdirSync(dir)) {
@@ -28,11 +30,22 @@ for (const f of files) {
   for (const match of body.matchAll(linkRe)) {
     const target = match[2];
     if (
-      target.startsWith("http://") ||
-      target.startsWith("https://") ||
       target.startsWith("#") ||
       target.startsWith("mailto:")
     ) {
+      continue;
+    }
+    if (target.startsWith("http://") || target.startsWith("https://")) {
+      const url = new URL(target);
+      if (url.hostname === "orogen.network" && url.pathname.startsWith("/downloads/")) {
+        const artifact = join(landingDownloads, url.pathname.replace(/^\/downloads\//, ""));
+        try {
+          statSync(artifact);
+        } catch {
+          broken++;
+          console.error(`BROKEN: ${f} -> ${target} (missing local artifact ${artifact})`);
+        }
+      }
       continue;
     }
     // VitePress-style clean URLs: /foo/ -> docs/foo/index.md
@@ -42,6 +55,16 @@ for (const f of files) {
       resolved = t.endsWith("/")
         ? join(root, t, "index.md")
         : join(root, t.endsWith(".md") ? t : `${t}.md`);
+      if (!t.endsWith("/") && !t.endsWith(".md")) {
+        const indexCandidate = join(root, t, "index.md");
+        try {
+          statSync(indexCandidate);
+          resolved = indexCandidate;
+        } catch {
+          // Keep the clean .md candidate; the main existence check below
+          // reports the error if neither form exists.
+        }
+      }
     } else {
       resolved = join(dirname(f), target);
       if (!resolved.endsWith(".md")) {
@@ -52,14 +75,8 @@ for (const f of files) {
     try {
       statSync(resolved);
     } catch {
-      // For our skeleton, many cross-refs to /protocol/rfcs/000N point to files we haven't
-      // authored yet. Treat them as warnings, not errors, unless DOC_LINK_STRICT is set.
-      if (process.env.DOC_LINK_STRICT) {
-        broken++;
-        console.error(`BROKEN: ${f} -> ${target} (resolved ${resolved})`);
-      } else {
-        console.warn(`warn: ${f} -> ${target} (resolved ${resolved})`);
-      }
+      broken++;
+      console.error(`BROKEN: ${f} -> ${target} (resolved ${resolved})`);
     }
   }
 }

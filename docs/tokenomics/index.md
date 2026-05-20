@@ -85,6 +85,6 @@ verification slice never starves in a deep trough. See
 - **Year 2:** organic demand covers ≥85%; emission subsidy is `<1.2×`.
 - **Year 3:** subsidy is `<1×` — net deflationary when demand runs hot.
 
-These targets are tracked publicly on the
-[subsidy dashboard](https://subsidy.orogen.network) and are the second-most
-important gating signal at permissionless launch after the audit.
+These targets will appear in the subsidy dashboard once that surface is live.
+They are the second-most important gating signal at permissionless launch after
+the audit.

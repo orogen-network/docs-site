@@ -1,29 +1,46 @@
 # Yuma scoring
 
-Stake-weighted consensus on per-operator performance per epoch.
+Governed validator admission, top-K submission permits, and median-clipped
+stake-weighted per-epoch operator scoring.
 
 ## How it works
 
-Per epoch (~72 min, 360 blocks):
+Per epoch (360 blocks, about 36 minutes at the current 6-second block time):
 
-1. Each validator submits a weight vector over operators based on replay results, attestation freshness, heartbeat liveness, and latency.
-2. `pallet-yuma-consensus` aggregates the vectors stake-weighted with outlier clipping (Bittensor pattern — prevents >50%-stake lying).
-3. Output: per-operator `Incentive` vector that determines per-epoch emission share.
+1. Governance adds or removes validator accounts in `pallet-yuma-consensus`,
+   assigning each account a stake weight and entity id.
+2. Governance rotates the active Yuma permit set for the epoch to the top
+   permitted validators by stake weight, with deterministic account-id tie
+   breaking.
+3. Only validators permitted for that epoch can submit weight vectors over
+   operators.
+4. Admission enforces a bounded validator set and an entity concentration cap.
+5. `compute_epoch_incentives` clips each submitted score to the per-operator
+   median, aggregates clipped scores by validator stake weight, then normalizes
+   operator incentives to basis points.
 
 ## Validator earnings
 
-Validators earn 15% of per-job emission split with opML watchers + zkML provers. Earnings are proportional to:
+The target economics reserve 15% of per-job emission split for validators,
+opML watchers, and zkML provers. Validator earnings are intended to be
+proportional to:
+
 - Sampling volume × match-rate-to-consensus.
 - Low coverage → lose emission.
 - Drift from consensus → lose emission and bond stake.
 
 ## Validator permit
 
-Top-K stake (K=128) get validator permits. Below the cap, validators continue submitting but their weights aren't aggregated. Above the cap, lowest-stake validator is bumped out on each registration.
+The implemented runtime enforces a bounded governed validator set and a
+separate epoch-scoped permit set. `rotate_permits(epoch)` selects the top
+permitted validators by governed stake weight before weight submissions begin
+for that epoch. In the current runtime configuration the governed set is capped
+at 64 validators and all 64 can be permitted.
 
 ## Concentration cap
 
-No single entity can hold >20% of validator stake (enforced via on-chain check at registration). Plan §6 rule 6.
+The current Yuma membership extrinsics enforce an entity stake-share cap after
+bootstrap, using the entity id attached to each validator admission record.
 
 ## See also
 

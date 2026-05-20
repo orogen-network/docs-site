@@ -48,7 +48,7 @@ model_list:
   - model_name: llama-3.1-70b
     litellm_params:
       model: orogen/llama-3.1-70b-instruct
-      api_base: https://gateway.orogen.network/v1
+      api_base: os.environ/OROGEN_GATEWAY_URL
       api_key: os.environ/OROGEN_API_KEY
 ```
 

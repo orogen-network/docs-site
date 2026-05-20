@@ -12,7 +12,7 @@ X on independent hardware produced the same response hash."
 
 ## In this section
 
-- [Replay sampling](/validators/replay) — RFC-0006 commit-reveal randomness,
+- [Replay sampling](/validators/replay) — planned RFC-0006 randomness,
   per-tier sample-rate floors, and the independence requirement.
 - [Yuma scoring](/validators/yuma) — how stake-weighted weight vectors
   aggregate into a per-operator `Incentive` vector with outlier clipping.
@@ -38,11 +38,12 @@ X on independent hardware produced the same response hash."
   validator needs B200/H200-equivalent GPUs; a validator that only audits
   `cloud-rented` and below needs less.
 - **Validator stake.** 10× the operator minimum.
-- **Geographic / IP diversity.** Validator stake-concentration cap is 20% per
-  entity; same /16 subnet cannot occupy both top-K slots. Pool-disjoint from
-  the operator pool you are auditing.
-- **Top-K permit.** The top 128 validators by stake aggregate; below the cap,
-  weights are submitted but not aggregated until you bump someone out.
+- **Entity diversity.** Validator stake-concentration cap is 20% per entity in
+  the current runtime. Subnet/IP correlation is an off-chain watcher signal,
+  not a Yuma permit rule yet.
+- **Top-K permit.** The governed Yuma set is capped at 64 validators in the
+  current runtime, and `rotate_permits(epoch)` controls which accounts can
+  submit weight vectors for that epoch.
 
 ## What you earn
 
@@ -64,8 +65,10 @@ self-replay produces self-confirmation.
 
 ## When validators come online
 
-- **Forge testnet:** foundation-vetted validators replay live traffic today.
+- **Forge testnet:** foundation-vetted validators are planned once Forge
+  endpoints and independent replay inputs are available.
 - **Mainnet TGE:** mainnet opens to vetted validators after the multi-firm
   audit; top-K stake determines aggregation.
 - **Permissionless:** open registration follows TGE, subject to the same
-  stake-concentration and IP-diversity rules.
+  stake-concentration and IP-diversity rules. Future runtime upgrades can raise
+  the Yuma validator cap through the normal governance/RFC process.
