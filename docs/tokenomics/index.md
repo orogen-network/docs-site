@@ -41,7 +41,7 @@ Customer USD --burn at oracle TWAP--> CUC minted (non-transferable, 30d expiry)
 | Pool | Share | Vesting |
 | --- | --- | --- |
 | Mining / emission pool | 40% | Long-term, capped by the per-epoch rule. |
-| Investors (seed + Series A) | 12% | 4-year cliff + 4-year linear. |
+| Locked backers | 12% | 4-year cliff + 4-year linear. |
 | Team + advisors | 12% | 4-year cliff + 4-year linear. |
 | Treasury (foundation) | 10% | DAO-controlled. |
 | Ecosystem / grants | 8% | DAO-controlled. |
