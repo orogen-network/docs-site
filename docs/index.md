@@ -27,8 +27,8 @@ features:
     details: '`pip install orogen-sdk` or `npm install @orogen/sdk` and point `base_url` at the gateway. The wire shape is OpenAI Chat Completions plus four optional `useful_*` fields (nonce, tier, region, price cap). A LiteLLM provider ships the same surface inside existing stacks.'
     link: /customers/
     linkText: Customer guide
-  - title: USD-denominated payouts via burn-and-mint.
-    details: Customers pay USD. The gateway burns OROG at the oracle TWAP (RFC-0008) and credits the customer in non-transferable CUC. Operators serve inference and receive per-job settlement — 75% operator, 15% verification, 5% treasury, 5% governance.
+  - title: Burn-and-mint settlement accounting.
+    details: Customers pay USD. The gateway burns OROG at the oracle TWAP (RFC-0008) and credits the customer in non-transferable CUC. Operators serve inference and the runtime applies the protocol settlement split after verification.
     link: /tokenomics/
     linkText: Tokenomics
   - title: Demand-elastic emission, pallet-enforced — no foundation mint discretion.

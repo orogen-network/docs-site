@@ -22,17 +22,16 @@ not catastrophic.
 - [Stake + slashing](/operators/stake) — bond requirements, severities, caps,
   and dispute path.
 
-## What you get
+## Settlement Mechanics
 
-- **75% of per-job emission.** The largest operator share in the category —
-  Bittensor SN3 pays 41% to its analogue role.
-- **USD-denominated payouts via burn-and-mint.** The chain mints the OROG
-  amount that matches the customer-side USD burn at the oracle TWAP.
+- **Per-job settlement.** The runtime applies the protocol split only after
+  routed work is served and verified.
+- **Oracle-priced accounting.** Burn-and-mint quantities are computed at the
+  oracle TWAP for the finalized job.
 - **Reputation that affects routing.** The Yuma scoring vector folds into the
-  gateway's routing decision; consistent operators get preferential routing
-  within tier.
-- **Optional cuPOW lane** (deferred to Q4 2028) as a separate 5% supply
-  emission for Hopper-class GPUs.
+  gateway's routing decision alongside tier, latency, and verification state.
+- **Optional cuPOW lane** (deferred to Q4 2028) remains a separate protocol
+  work lane for Hopper-class GPUs.
 
 ## What you need
 

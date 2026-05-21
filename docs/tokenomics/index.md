@@ -83,7 +83,7 @@ verification slice never starves in a deep trough. See
 - **Year 1:** organic demand covers ≥50% of operator USD-equivalent payouts;
   emission subsidy is `<2×` organic burn.
 - **Year 2:** organic demand covers ≥85%; emission subsidy is `<1.2×`.
-- **Year 3:** subsidy is `<1×` — net deflationary when demand runs hot.
+- **Year 3:** subsidy target is `<1×` under the burn-linked mint rule.
 
 These targets will appear in the subsidy dashboard once that surface is live.
 They are the second-most important gating signal at permissionless launch after
