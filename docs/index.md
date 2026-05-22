@@ -49,7 +49,7 @@ prose here exists to orient, not to duplicate.
 | --- | --- | --- |
 | **Customers** — app builders, LLM consumers | Send OpenAI-shaped requests, verify receipts, estimate per-tier price | [/customers/](/customers/) |
 | **Operators** — GPU owners across six tiers | Run a node, pass attestation, stake, route to demand | [/operators/](/operators/) |
-| **Validators** — replay node operators, stakers | Receive the 15% verification slice by replaying sampled inferences | [/validators/](/validators/) |
+| **Validators** — replay node operators and proof workers | Receive the verification allocation by performing assigned replay or proof work; no passive staking yield | [/validators/](/validators/) |
 | **Researchers and governance participants** | Read the protocol spec, the RFCs, and the tokenomics | [/protocol/](/protocol/) · [/tokenomics/](/tokenomics/) · [/governance/](/governance/) |
 
 ## Status
