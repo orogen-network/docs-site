@@ -15,8 +15,8 @@ not catastrophic.
 
 - [Tiers + hardware](/operators/tiers) — the six-tier matrix from `dc-premium`
   through `embed-only`, with verification requirements per tier.
-- [Onboarding](/operators/onboarding) — the 1-click wizard on Forge testnet
-  and the manual `wallet-cli` path.
+- [Onboarding](/operators/onboarding) — the manual `wallet-cli` path against
+  the live Forge testnet (and the forthcoming 1-click wizard).
 - [Attestation](/operators/attestation) — multi-vendor TEE quote production
   and the 7-day re-attestation cadence (RFC-0002).
 - [Stake + slashing](/operators/stake) — bond requirements, severities, caps,
@@ -53,9 +53,10 @@ you keep your bond and your reputation.
 
 ## Registration Path
 
-- **Forge testnet:** foundation-vetted operator registration is planned through
-  the [onboarding wizard](/operators/onboarding) or the manual `wallet-cli`
-  path once Forge endpoints are announced.
+- **Forge testnet (live):** operator registration is open now via the manual
+  `wallet-cli` path (a 1-click [onboarding wizard](/operators/onboarding) is
+  forthcoming). Fund a hotkey from the public faucet, then
+  `wallet-cli register-operator` against `wss://forge-rpc.orogen.network`.
 - **Mainnet TGE:** mainnet opens to vetted operators after the multi-firm
   audit clears.
 - **Permissionless:** open registration follows TGE, gated on the Day-30 KPIs.

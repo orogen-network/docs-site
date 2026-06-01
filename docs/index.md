@@ -24,7 +24,7 @@ features:
     link: /customers/receipts
     linkText: How receipts work
   - title: Drop-in OpenAI compatibility — your code works unchanged.
-    details: '`pip install orogen-sdk` or `npm install @orogen/sdk` and point `base_url` at the gateway. The wire shape is OpenAI Chat Completions plus four optional `useful_*` fields (nonce, tier, region, price cap). A LiteLLM provider ships the same surface inside existing stacks.'
+    details: 'Install `orogen-sdk` (Python) or `@orogen/sdk` (TypeScript) — from source for now, registry publish is coming soon — and point `base_url` at the gateway. The wire shape is OpenAI Chat Completions plus four optional `useful_*` fields (nonce, tier, region, price cap). A LiteLLM provider ships the same surface inside existing stacks.'
     link: /customers/
     linkText: Customer guide
   - title: Burn-and-mint settlement accounting.
@@ -54,15 +54,16 @@ prose here exists to orient, not to duplicate.
 
 ## Status
 
-- **Forge is not a public release gate yet.** The split-repo codebase has a
-  local test gate, but public RPC, GraphQL, gateway, validator, and operator
-  endpoints are not advertised as live production services.
-- **SDKs are installable development packages.** Use the package-manager
-  instructions on [Downloads](/downloads); endpoint defaults must be configured
-  for the environment you are targeting.
-- **Mainnet TGE remains gated.** Forge operation, independent validators,
-  real audits, live chaos drills, and release CI all need to close before any
-  production launch claim.
+- **Forge testnet is live and open to outside operators.** Public endpoints
+  (chain RPC, gateway, attestation, indexer, faucet) are listed on the
+  [Forge testnet](/start/forge-testnet) page. It is a **test-mode preview**:
+  the gateway runs in test mode, attestation uses mock quotes, and the faucet
+  is low-cap — not a production release.
+- **SDKs are development packages.** They are not on PyPI/npm yet — install
+  from source. See [Downloads](/downloads).
+- **Mainnet TGE remains gated.** Multi-validator Forge operation, independent
+  validators, real audits, live chaos drills, and release CI all need to close
+  before any production launch claim.
 
 If something here contradicts the canonical RFC, the RFC wins and this page
 is the bug. Open an issue or edit on GitHub.

@@ -12,21 +12,17 @@ This page lists the current release policy. The only checked-in download artifac
 
 ## SDKs
 
-| Artifact | Install |
+The SDKs are not published to PyPI / npm yet — **registry publish is coming
+soon**. Until then, install from source:
+
+| Artifact | Install (source) |
 |---|---|
-| Python: `orogen-sdk` | `pip install orogen-sdk` or `uv add orogen-sdk` |
-| TypeScript: `@orogen/sdk` | `npm install @orogen/sdk` |
-| LiteLLM provider: `litellm-orogen-provider` | `pip install litellm-orogen-provider` |
+| Python: `orogen-sdk` | `pip install "git+https://github.com/orogen-network/customer-sdk-py"` |
+| TypeScript: `@orogen/sdk` | `npm install github:orogen-network/customer-sdk-ts` |
+| LiteLLM provider: `litellm-orogen-provider` | `pip install "git+https://github.com/orogen-network/litellm-backend-driver"` |
 
-Source bundles are produced by package registries and GitHub releases; they are not linked here until the corresponding artifact is present under `orogen.network/downloads/` with a checksum.
-
-For the current workspace, use registry installs:
-
-```bash
-pip install orogen-sdk
-npm install @orogen/sdk
-pip install litellm-orogen-provider
-```
+Once the packages are published, the registry installs (`pip install orogen-sdk`,
+`npm install @orogen/sdk`) will work directly.
 
 ## Whitepaper
 

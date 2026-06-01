@@ -1,19 +1,31 @@
 # Forge testnet
 
-Forge is the planned public Orogen testnet. In the current split-repo state,
-do not treat any public RPC, WebSocket, GraphQL, gateway, validator, or
-operator endpoint as live unless the coordination handoff explicitly says so.
+Forge is the public Orogen testnet. It is live and open to outside operators
+who want to join and mine. Treat it as a **test-mode preview**: endpoints are
+real and reachable, but the runtime carries the caveats in the
+[Caveats](#caveats) section below — do not derive economic conclusions or
+production guarantees from it.
 
-The chain/runtime code can be exercised locally, and the split-repo local
-gate is green. The production Forge milestone still requires durable
-service configuration, independent validator replay inputs, live chaos
-drills, CI/CODEOWNERS, real release artifacts, and audit coverage.
+The chain/runtime code can also be exercised entirely locally, and the
+split-repo local gate is green. The production Forge milestone still requires
+durable multi-validator operation, independent validator replay inputs, live
+chaos drills, and audit coverage.
 
-## Endpoint Policy
+## Public endpoints
 
-Public endpoint tables are intentionally withheld until Forge is actually
-operating. Hostnames must either serve the real service or an explicit
-unavailable response; docs must not imply live chain access before that.
+| Service | Endpoint | Notes |
+|---|---|---|
+| Chain RPC (WSS) | `wss://forge-rpc.orogen.network` | Primary node WebSocket RPC. Alias: `wss://chain.orogen.network`. |
+| Inference gateway | `https://gateway.orogen.network` | OpenAI-compatible API. Alias: `https://api.orogen.network`. **Test-mode.** |
+| Attestation service | `https://attestation-service.orogen.network` | Produces operator attestation reports. Uses **mock quotes** on Forge. |
+| Attestation explorer | `https://attestation.orogen.network` | Browse submitted attestation reports. |
+| Indexer (GraphQL) | `https://indexer.orogen.network/graphql` | Subsquid index of chain events. |
+| Docs | `https://docs.orogen.network` | This site. |
+| Faucet | `https://faucet.orogen.network` | Public testnet-OROG faucet (being deployed). **Low-cap.** |
+
+These are testnet services. They can be reset on a chain-spec rebuild (see
+[Spec regenerability](#caveats)); when that happens the genesis hash changes
+and balances are wiped.
 
 ## Chain identity
 
@@ -21,25 +33,42 @@ unavailable response; docs must not imply live chain access before that.
 |---|---|
 | `name` | `Orogen Forge Testnet` |
 | `id` | `orogen_forge` |
-| `chainType` | Planned testnet |
 | `protocolId` | `orogenforge` |
+| Runtime spec version | `6` |
 | Token | `OROG`, 12 decimals |
 | ss58 prefix | `42` |
-| Genesis hash | To be published with the signed chain spec |
+| `MinStake` | `1_000_000_000_000` plancks (= 1 OROG) |
+
+## Get testnet OROG
+
+Operators and integrators can request testnet OROG from the public faucet
+lane:
+
+```sh
+curl -X POST https://faucet.orogen.network/drip-public \
+  -H 'Content-Type: application/json' \
+  -d '{"recipient":"<your-ss58-address>"}'
+```
+
+The public lane is **low-cap** (rate-limited, small drip) — enough to register
+an operator and submit heartbeats, not to stress-test balances.
 
 ## Quick checks
 
-Quick checks will be published with the signed chain spec and public RPC
-announcement.
+```sh
+# Chain name and runtime version over the public RPC.
+curl -s https://indexer.orogen.network/graphql \
+  -H 'Content-Type: application/json' \
+  -d '{"query":"{ squidStatus { height } }"}'
+```
 
 ## Connect with Polkadot.js
 
 ```ts
 import { ApiPromise, WsProvider } from "@polkadot/api";
 
-const api = await ApiPromise.create({
-  provider: new WsProvider(process.env.FORGE_WS_URL),
-});
+const url = process.env.FORGE_WS_URL ?? "wss://forge-rpc.orogen.network";
+const api = await ApiPromise.create({ provider: new WsProvider(url) });
 
 console.log("connected to:", (await api.rpc.system.chain()).toString());
 console.log("genesis:", api.genesisHash.toHex());
@@ -50,7 +79,9 @@ console.log("genesis:", api.genesisHash.toHex());
 ```rust
 use subxt::{OnlineClient, PolkadotConfig};
 
-let api = OnlineClient::<PolkadotConfig>::from_url(std::env::var("FORGE_WS_URL")?).await?;
+let url = std::env::var("FORGE_WS_URL")
+    .unwrap_or_else(|_| "wss://forge-rpc.orogen.network".to_string());
+let api = OnlineClient::<PolkadotConfig>::from_url(url).await?;
 let header = api.blocks().at_latest().await?.header().clone();
 println!("head #{} hash {:?}", header.number, header.hash());
 ```
@@ -68,23 +99,22 @@ git clone https://github.com/orogen-network/chain-node.git
 cd chain-node
 cargo build --release --features dev-runtime
 
-# Sync from a published seed once Forge endpoints are announced.
 ./target/release/chain-node \
   --chain forge \
   --base-path ~/.local/share/orogen-forge \
   --name my-forge-node \
-  --bootnodes "$FORGE_BOOTNODE" \
   --rpc-port 9944 \
   --port 30333
 ```
 
-Once the local node is syncing you can verify the genesis matches:
+Once the local node is syncing you can verify the genesis matches the public
+RPC:
 
 ```sh
 curl -s http://127.0.0.1:9944 \
   -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","method":"chain_getBlockHash","params":[0],"id":1}'
-# Compare with the published genesis hash.
+# Compare with the genesis returned by wss://forge-rpc.orogen.network.
 ```
 
 If you see a different genesis hash, your local runtime WASM is at a
@@ -93,6 +123,12 @@ different `pallet-suite` SHA than the seed; rebuild against
 
 ## Caveats
 
+- **Test-mode gateway.** `gateway.orogen.network` runs in test mode. Routing,
+  pricing, and settlement are exercised end-to-end but are not production
+  guarantees.
+- **Mock attestation quotes.** The attestation service issues mock TEE quotes
+  on Forge. On-chain attestation hashes are accepted but not yet hardware-validated.
+- **Low-cap faucet.** The public faucet drip is small and rate-limited.
 - **Single validator.** Block production and GRANDPA finality depend on
   one foundation-run authority. If it stalls, the network stalls.
   Multi-validator forge spec is on the post-audit roadmap.
@@ -103,12 +139,8 @@ different `pallet-suite` SHA than the seed; rebuild against
   conclusions from on-chain state.
 - **Spec regenerability.** The raw chain-spec is byte-deterministic given
   the same `pallet-suite` SHA. If we bump `pallet-suite` and rebuild, the
-  genesis hash changes; the public endpoints will be reset on the next
-  cycle entry in [HANDOFF](https://github.com/orogen-network/orogen-coordination/blob/main/HANDOFF.md).
-- **No faucet yet.** The validator account is endowed at genesis; other
-  accounts have zero balance. A `testnet-faucet` deployment is a
-  follow-up — until then, integrations should test against zero-balance
-  flows.
+  genesis hash changes and balances reset; the public endpoints are reset on
+  the next cycle entry in [HANDOFF](https://github.com/orogen-network/orogen-coordination/blob/main/HANDOFF.md).
 
 For the full operational record (keystore layout, systemd unit, ufw
 rules), see the [seed node spec README](https://github.com/orogen-network/chain-node/blob/main/specs/orogen-forge.README.md).

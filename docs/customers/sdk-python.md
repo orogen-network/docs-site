@@ -7,7 +7,8 @@ from orogen_sdk import OrogenClient
 
 with OrogenClient(
     api_key=os.environ["OROGEN_API_KEY"],
-    base_url=os.environ["OROGEN_GATEWAY_URL"],
+    # Live test-mode gateway; override via OROGEN_GATEWAY_URL.
+    base_url=os.environ.get("OROGEN_GATEWAY_URL", "https://gateway.orogen.network/v1"),
 ) as client:
     response = client.chat.completions.create(
         model="llama-3.1-70b-instruct@my-adapter",
@@ -30,8 +31,10 @@ Cryptographic signature verification is best-effort client-side; authoritative v
 
 ## Install
 
+Not on PyPI yet (coming soon). Install from source:
+
 ```bash
-uv add orogen-sdk
-# or
-pip install orogen-sdk
+pip install "git+https://github.com/orogen-network/customer-sdk-py"
 ```
+
+The gateway is in **test mode** on Forge — see the [Forge testnet](/start/forge-testnet) caveats.

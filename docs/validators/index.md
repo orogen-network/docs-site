@@ -65,8 +65,10 @@ self-replay produces self-confirmation.
 
 ## When validators come online
 
-- **Forge testnet:** foundation-vetted validators are planned once Forge
-  endpoints and independent replay inputs are available.
+- **Forge testnet (live):** the chain is up at `wss://forge-rpc.orogen.network`,
+  but Forge currently runs a single foundation authority; independent validator
+  replay inputs are still being brought online, so external validator slots are
+  not open yet.
 - **Mainnet TGE:** mainnet opens to vetted validators after the multi-firm
   audit; top-K stake determines aggregation.
 - **Permissionless:** open registration follows TGE, subject to the same
