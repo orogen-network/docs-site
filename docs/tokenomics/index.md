@@ -72,7 +72,7 @@ The split is hard-coded in `pallet-bme` and changes only via runtime upgrade
 ## Emission, in one paragraph
 
 Per-epoch mint is the minimum of the bootstrap cap (Year 1: 8%/year; Year 2:
-4%/year), the rolling-90d burn multiplied by an elasticity coefficient
+4%/year), the rolling-180d burn multiplied by an elasticity coefficient
 (default 1.0, governance-bounded `[0.8, 1.5]`), and the hard 5%/year supply
 ceiling. There is a 0.5%/year floor below which mint will not fall, so the
 verification slice never starves in a deep trough. See

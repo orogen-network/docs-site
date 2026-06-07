@@ -72,7 +72,7 @@ if any of the following fails:
   same USD-denominated payout than were burned at the customer side. Net effect:
   structural deflation on the supply curve.
 - **OROG depreciates between burn and mint.** More OROG are minted, still
-  capped by the rolling-90d burn-cap and the 5%/year supply ceiling. Operators
+  capped by the rolling-180d burn-cap and the 5%/year supply ceiling. Operators
   receive the USD-equivalent target, the supply expands within the ceiling.
 
 This is the asymmetry that makes the network's payouts USD-denominated to the

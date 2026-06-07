@@ -16,12 +16,12 @@ chaos drills, and audit coverage.
 | Service | Endpoint | Notes |
 |---|---|---|
 | Chain RPC (WSS) | `wss://forge-rpc.orogen.network` | Primary node WebSocket RPC. Alias: `wss://chain.orogen.network`. |
-| Inference gateway | `https://gateway.orogen.network` | OpenAI-compatible API. Alias: `https://api.orogen.network`. **Test-mode.** |
+| Inference gateway | `https://gateway.orogen.network` | OpenAI-compatible API. **Test-mode.** |
 | Attestation service | `https://attestation-service.orogen.network` | Produces operator attestation reports. Uses **mock quotes** on Forge. |
 | Attestation explorer | `https://attestation.orogen.network` | Browse submitted attestation reports. |
 | Indexer (GraphQL) | `https://indexer.orogen.network/graphql` | Subsquid index of chain events. |
 | Docs | `https://docs.orogen.network` | This site. |
-| Faucet | `https://faucet.orogen.network` | Public testnet-OROG faucet (being deployed). **Low-cap.** |
+| Faucet | `https://faucet.orogen.network` | Public testnet-OROG faucet. **Low-cap.** |
 
 These are testnet services. They can be reset on a chain-spec rebuild (see
 [Spec regenerability](#caveats)); when that happens the genesis hash changes
@@ -129,9 +129,10 @@ different `pallet-suite` SHA than the seed; rebuild against
 - **Mock attestation quotes.** The attestation service issues mock TEE quotes
   on Forge. On-chain attestation hashes are accepted but not yet hardware-validated.
 - **Low-cap faucet.** The public faucet drip is small and rate-limited.
-- **Single validator.** Block production and GRANDPA finality depend on
-  one foundation-run authority. If it stalls, the network stalls.
-  Multi-validator forge spec is on the post-audit roadmap.
+- **Foundation validators.** Block production and GRANDPA finality currently
+  depend on two foundation-run authorities. If the foundation validator set
+  stalls, the network stalls. Independent validator expansion remains part of
+  the Forge hardening path.
 - **Skeleton pallet logic.** The runtime API is wired and dispatchables
   accept signed extrinsics, but the math inside `pallet-bme`,
   `pallet-yuma-consensus`, `pallet-slashing`, `pallet-attestation-registry`
