@@ -19,6 +19,7 @@ export default defineConfig({
   ignoreDeadLinks: true,
 
   head: [
+    ["link", { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
     ["meta", { name: "theme-color", content: "#0b0d10" }],
     ["meta", { name: "color-scheme", content: "dark" }],
     // Content-Security-Policy meta fallback. Mirrors docs/public/_headers so
@@ -59,6 +60,7 @@ export default defineConfig({
 
   themeConfig: {
     siteTitle: "Orogen Docs",
+    logo: { light: "/orogen-mark-color.svg", dark: "/orogen-mark-dark.svg" },
 
     // Top nav order: Start · Operators · Validators · Customers · Protocol RFCs · Governance · Tokenomics · Downloads.
     nav: [
