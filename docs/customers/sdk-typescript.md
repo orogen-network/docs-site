@@ -21,7 +21,7 @@ console.log(response.useful_verification);
 
 ## Install
 
-Not on npm yet (coming soon). Install from source:
+Install from source (npm publish follows the Forge readiness gates):
 
 ```bash
 npm install github:orogen-network/customer-sdk-ts

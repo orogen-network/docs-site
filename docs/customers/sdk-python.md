@@ -31,7 +31,7 @@ Cryptographic signature verification is best-effort client-side; authoritative v
 
 ## Install
 
-Not on PyPI yet (coming soon). Install from source:
+Install from source (PyPI publish follows the Forge readiness gates):
 
 ```bash
 pip install "git+https://github.com/orogen-network/customer-sdk-py"

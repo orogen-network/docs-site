@@ -141,7 +141,9 @@ different `pallet-suite` SHA than the seed; rebuild against
 - **Spec regenerability.** The raw chain-spec is byte-deterministic given
   the same `pallet-suite` SHA. If we bump `pallet-suite` and rebuild, the
   genesis hash changes and balances reset; the public endpoints are reset on
-  the next cycle entry in [HANDOFF](https://github.com/orogen-network/orogen-coordination/blob/main/HANDOFF.md).
+  the next cycle entry. Current endpoint health is on the
+  [status page](https://status.orogen.network).
 
-For the full operational record (keystore layout, systemd unit, ufw
-rules), see the [seed node spec README](https://github.com/orogen-network/chain-node/blob/main/specs/orogen-forge.README.md).
+For the public seed-node metadata (chain identity, endpoints, peer
+multiaddr), see the
+[seed node spec](https://github.com/orogen-network/chain-node/blob/main/specs/orogen-forge.README.md).

@@ -24,7 +24,7 @@ features:
     link: /customers/receipts
     linkText: How receipts work
   - title: Drop-in OpenAI compatibility — your code works unchanged.
-    details: 'Install `orogen-sdk` (Python) or `@orogen/sdk` (TypeScript) — from source for now, registry publish is coming soon — and point `base_url` at the gateway. The wire shape is OpenAI Chat Completions plus four optional `useful_*` fields (nonce, tier, region, price cap). A LiteLLM provider ships the same surface inside existing stacks.'
+    details: 'Install `orogen-sdk` (Python) or `@orogen/sdk` (TypeScript) from source and point `base_url` at the gateway. The wire shape is OpenAI Chat Completions plus four optional `useful_*` fields (nonce, tier, region, price cap). A LiteLLM provider ships the same surface inside existing stacks.'
     link: /customers/
     linkText: Customer guide
   - title: Burn-and-mint settlement accounting.
@@ -39,8 +39,9 @@ features:
 
 ## What lives in these docs
 
-These docs cover the four audiences identified in the marketing brief.
-If a section is short, that is intentional — the canonical specs live in the
+These docs cover the four audiences the network serves: customers,
+operators, validators, and researchers. If a section is short, that is
+intentional — the canonical specs live in the
 [RFCs](/protocol/rfcs/) and the per-pallet code under
 [`pallet-suite/`](https://github.com/orogen-network/pallet-suite);
 prose here exists to orient, not to duplicate.
