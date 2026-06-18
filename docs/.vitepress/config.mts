@@ -13,10 +13,13 @@ export default defineConfig({
   base: "/",
   cleanUrls: true,
   lang: "en-US",
-  // Many cross-refs still resolve to source RFCs in sibling repos
-  // (chain-tooling-rust, pallet-suite, etc.) rather than docs-internal
-  // pages. Treat them as warnings, not build errors.
-  ignoreDeadLinks: true,
+  // Broken internal links fail the build. External cross-refs to source
+  // RFCs in sibling repos are full https:// URLs, which VitePress does not
+  // check as dead links — only internal markdown links are checked — so
+  // enabling strict dead-link detection does not break those. Keep this on
+  // so a dangling in-site link is caught at build time, not silently
+  // swallowed. (Was ignoreDeadLinks: true, which masked broken links.)
+  ignoreDeadLinks: false,
 
   head: [
     ["link", { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
